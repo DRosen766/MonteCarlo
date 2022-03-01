@@ -1,8 +1,10 @@
+"""Provide the primary functions."""
+
+
 # import classes
 from .SpinConfiguration import *
 from .SingleDimensionHamiltonian import *
 
-"""Provide the primary functions."""
 
 
 def canvas(with_attribution=True):
@@ -136,6 +138,7 @@ def printValues(temp, J, mu):
 
 
 if __name__ == "__main__":
+    print("HELLO WORLD")
     temperatureValues = []
     averageEnergyValues = []
     averageMagnetismValues = []

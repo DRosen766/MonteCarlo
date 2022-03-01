@@ -12,4 +12,5 @@ import MonteCarlo
 
 def test_MonteCarlo_imported():
     """Sample test, will always pass so long as import statement worked."""
+    print("working")
     assert "MonteCarlo" in sys.modules
