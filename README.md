@@ -7,6 +7,12 @@ MonteCarlo
 
 Package for Ising Hamiltonian
 
+This repository is currently under development. To do a development install, download this repository and type
+
+`pip install -e .`
+
+in the repository directory.
+
 ### Copyright
 
 Copyright (c) 2022, Daniel Rosen
