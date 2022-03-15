@@ -1,8 +1,8 @@
 MonteCarlo
 ==============================
 [//]: # (Badges)
-[![GitHub Actions Build Status](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/workflows/CI/badge.svg)](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/actions?query=workflow%3ACI)
-[![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/branch/master)
+[![GitHub Actions Build Status](https://github.com/DRosen766/MonteCarlo/workflows/CI/badge.svg)](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/actions?query=workflow%3ACI)
+[![codecov](https://codecov.io/gh/DRosen766/MonteCarlo/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/branch/master)
 
 
 Package for Ising Hamiltonian
