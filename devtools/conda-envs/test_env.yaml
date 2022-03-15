@@ -8,6 +8,9 @@ dependencies:
     # Base depends
   - python
   - pip
+    # package dependencies
+  - numpy
+  - matplotlib
 
     # Testing
   - pytest

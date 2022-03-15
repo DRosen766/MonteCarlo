@@ -12,15 +12,13 @@ def testSpinConfiguration():
     assert(spinConfiguration(2, 2).spins == [1, -1])
     assert(spinConfiguration(1, 4).spins == [-1, -1, -1, 1])
     assert(spinConfiguration(15, 4).spins == [1, 1, 1, 1])
-testSpinConfiguration()
 
 def testGetSpins():
     assert(spinConfiguration(0, 2).getNumElements() == 2)
-testGetSpins()
+    assert(spinConfiguration(0, 3).getNumElements() == 3)
 
 def testCalculateMagnetism():
     assert(spinConfiguration(0, 2).calculateMagnetism() == -2)    
     assert(spinConfiguration(2, 2).calculateMagnetism() == 0)
     assert(spinConfiguration(1, 4).calculateMagnetism() == -2)
     assert(spinConfiguration(15, 4).calculateMagnetism() == 4)  
-testCalculateMagnetism()
