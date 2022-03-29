@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 # Add imports here
 from .Ising import *
+from .SpinConfiguration import *
+from .SingleDimensionHamiltonian import *
 
 # Handle versioneer
 from ._version import get_versions

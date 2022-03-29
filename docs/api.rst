@@ -1,7 +1,19 @@
+Class Overview
+===============
+.. autosummary::
+
+
+
 API Documentation
 =================
+.. currentmodule:: MonteCarlo
 
-.. autosummary::
-   :toctree: autosummary
+.. automodule:: MonteCarlo.SingleDimensionHamiltonian
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-   MonteCarlo.canvas
+.. automodule:: MonteCarlo.SpinConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
