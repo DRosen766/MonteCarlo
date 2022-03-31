@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonteCarlo.SingleDimensionHamiltonian &mdash; MonteCarlo  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MonteCarlo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html#module-MonteCarlo.SingleDimensionHamiltonian">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MonteCarlo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>MonteCarlo.SingleDimensionHamiltonian</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for MonteCarlo.SingleDimensionHamiltonian</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.SpinConfiguration</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module containing the SingleDimensionHamiltonian class</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="SingleDimensionHamiltonian"><a class="viewcode-back" href="../../api.html#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian">[docs]</a><span class="k">class</span> <span class="nc">SingleDimensionHamiltonian</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;Class for Single Dimension Hamiltonian\n</span>
+<span class="sd">        NOTE: k constant is set to one</span>
+<span class="sd">        </span>
+<span class="sd">        :param J: a constant that determines the energy scale</span>
+<span class="sd">        :param mu: a constant that represents the magnetic moment of the system</span>
+<span class="sd">        :param spinConfiguration: the spin configuration of the system</span>
+<span class="sd">        :type spinConfiguration: spinConfiguration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c1">#     k constant, arbitrarily sent to 1</span>
+    
+<span class="c1">#     constructor</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">spinConfiguration</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor function for class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">J</span> <span class="o">=</span> <span class="n">J</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span> <span class="o">=</span> <span class="n">spinConfiguration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Hamiltonian</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculateHamiltonian</span><span class="p">()</span>
+        
+<div class="viewcode-block" id="SingleDimensionHamiltonian.calculateHamiltonian"><a class="viewcode-back" href="../../api.html#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateHamiltonian">[docs]</a>    <span class="k">def</span> <span class="nf">calculateHamiltonian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Helper function to calculate Ising hamiltonian value of spinConfiguration attribute using </span>
+
+<span class="sd">            .. math:: </span>
+<span class="sd">                \\hat{H}&#39;=\\frac{\hat{H}}{k} = -\\frac{J}{k}\sum_{&lt;ij&gt;} s_is_j</span>
+
+<span class="sd">            where, $$s_i=1$$ if the $$i^{th}$$ spin is `up` and $$s_i=-1$$ if it is `down`</span>
+<span class="sd">            </span>
+<span class="sd">            :return: Ising Hamiltonian Value of given spin configuration</span>
+<span class="sd">            :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">J</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+        <span class="n">spinSums</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">#         nested loops calculate alignment factor for each pair of elements</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">getNumElements</span><span class="p">()):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">getNumElements</span><span class="p">()):</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">):</span>
+                    <span class="n">spinSums</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">spinSums</span></div>
+                    
+        
+<div class="viewcode-block" id="SingleDimensionHamiltonian.calculateEnergy"><a class="viewcode-back" href="../../api.html#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateEnergy">[docs]</a>    <span class="k">def</span> <span class="nf">calculateEnergy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculates the energy of this system using:</span>
+
+<span class="sd">            .. math::</span>
+<span class="sd">                E = -J\sum_{ij} \sigma_i\sigma_j - \mu\sum_{j}\sigma_j</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sumOfProductsOfSpins</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">sumOfSpins</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">numElements</span><span class="p">):</span>
+            <span class="n">sumOfSpins</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">numElements</span><span class="p">):</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">j</span><span class="p">):</span>
+                    <span class="n">sumOfProductsOfSpins</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">sumOfProductsOfSpins</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">spinConfiguration</span><span class="o">.</span><span class="n">numElements</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">firstComponent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">J</span> <span class="o">*</span> <span class="n">sumOfProductsOfSpins</span>
+        <span class="n">secondComponent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="n">sumOfSpins</span>
+        
+        
+        <span class="n">instanceEnergy</span> <span class="o">=</span> <span class="n">firstComponent</span> <span class="o">+</span> <span class="n">secondComponent</span>
+        <span class="k">return</span> <span class="n">instanceEnergy</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Daniel Rosen. Project structure based on the Computational Molecular Science Python Cookiecutter version 1.6.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

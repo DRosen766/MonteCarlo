@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Overview &mdash; MonteCarlo  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> MonteCarlo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-MonteCarlo.SingleDimensionHamiltonian">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MonteCarlo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Class Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-overview">
+<h1>Class Overview<a class="headerlink" href="#class-overview" title="Permalink to this headline"></a></h1>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+</section>
+<section id="module-MonteCarlo.SingleDimensionHamiltonian">
+<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-MonteCarlo.SingleDimensionHamiltonian" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">MonteCarlo.SingleDimensionHamiltonian.</span></span><span class="sig-name descname"><span class="pre">SingleDimensionHamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spinConfiguration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SingleDimensionHamiltonian.html#SingleDimensionHamiltonian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Single Dimension Hamiltonian</p>
+<p>NOTE: k constant is set to one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>J</strong> – a constant that determines the energy scale</p></li>
+<li><p><strong>mu</strong> – a constant that represents the magnetic moment of the system</p></li>
+<li><p><strong>spinConfiguration</strong> (<a class="reference internal" href="#MonteCarlo.SpinConfiguration.spinConfiguration" title="MonteCarlo.SpinConfiguration.spinConfiguration"><em>spinConfiguration</em></a>) – the spin configuration of the system</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateEnergy">
+<span class="sig-name descname"><span class="pre">calculateEnergy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SingleDimensionHamiltonian.html#SingleDimensionHamiltonian.calculateEnergy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateEnergy" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the energy of this system using:</p>
+<div class="math notranslate nohighlight">
+\[E = -J\sum_{ij} \sigma_i\sigma_j - \mu\sum_{j}\sigma_j\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateHamiltonian">
+<span class="sig-name descname"><span class="pre">calculateHamiltonian</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SingleDimensionHamiltonian.html#SingleDimensionHamiltonian.calculateHamiltonian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateHamiltonian" title="Permalink to this definition"></a></dt>
+<dd><p>Helper function to calculate Ising hamiltonian value of spinConfiguration attribute using</p>
+<div class="math notranslate nohighlight">
+\[\hat{H}'=\frac{\hat{H}}{k} = -\frac{J}{k}\sum_{&lt;ij&gt;} s_is_j\]</div>
+<p>where, $$s_i=1$$ if the $$i^{th}$$ spin is <cite>up</cite> and $$s_i=-1$$ if it is <cite>down</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Ising Hamiltonian Value of given spin configuration</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-MonteCarlo.SpinConfiguration"></span><dl class="py class">
+<dt class="sig sig-object py" id="MonteCarlo.SpinConfiguration.spinConfiguration">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">MonteCarlo.SpinConfiguration.</span></span><span class="sig-name descname"><span class="pre">spinConfiguration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binaryConfiguration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numElements</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SpinConfiguration.html#spinConfiguration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SpinConfiguration.spinConfiguration" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Spin Configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binaryConfiguration</strong> (<em>int</em>) – the binary representation of the spins of each component of the system where 0 is ‘down’ and 1 is ‘up’</p></li>
+<li><p><strong>numElements</strong> (<em>int</em>) – number of components in system</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.SpinConfiguration.spinConfiguration.calculateMagnetism">
+<span class="sig-name descname"><span class="pre">calculateMagnetism</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SpinConfiguration.html#spinConfiguration.calculateMagnetism"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SpinConfiguration.spinConfiguration.calculateMagnetism" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the magnetism of this spinConfiguration</p>
+<div class="math notranslate nohighlight">
+\[M(\alpha) = N_{\text{up}}(\alpha) - N_{\text{down}}(\alpha)\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.SpinConfiguration.spinConfiguration.getNumElements">
+<span class="sig-name descname"><span class="pre">getNumElements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SpinConfiguration.html#spinConfiguration.getNumElements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SpinConfiguration.spinConfiguration.getNumElements" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>numberElements property of this spinConfiguration</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.SpinConfiguration.spinConfiguration.getSpins">
+<span class="sig-name descname"><span class="pre">getSpins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binaryConfiguration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SpinConfiguration.html#spinConfiguration.getSpins"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SpinConfiguration.spinConfiguration.getSpins" title="Permalink to this definition"></a></dt>
+<dd><p>Helper function to convert the binaryConfiguration as an integer into a list of integers where 1 represents up and -1 represents down</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Daniel Rosen. Project structure based on the Computational Molecular Science Python Cookiecutter version 1.6.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+MonteCarlo package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   MonteCarlo.tests
+
+Submodules
+----------
+
+MonteCarlo.Ising module
+-----------------------
+
+.. automodule:: MonteCarlo.Ising
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+MonteCarlo.Sandbox module
+-------------------------
+
+.. automodule:: MonteCarlo.Sandbox
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+MonteCarlo.SingleDimensionHamiltonian module
+--------------------------------------------
+
+.. automodule:: MonteCarlo.SingleDimensionHamiltonian
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+MonteCarlo.SpinConfiguration module
+-----------------------------------
+
+.. automodule:: MonteCarlo.SpinConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: MonteCarlo
+   :members:
+   :undoc-members:
+   :show-inheritance:

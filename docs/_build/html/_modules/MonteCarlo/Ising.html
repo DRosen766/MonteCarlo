@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonteCarlo.Ising &mdash; MonteCarlo  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MonteCarlo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MonteCarlo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>MonteCarlo.Ising</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for MonteCarlo.Ising</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Provide the primary functions.&quot;&quot;&quot;</span>
+
+
+<span class="c1"># import classes</span>
+<span class="kn">from</span> <span class="nn">.SpinConfiguration</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.SingleDimensionHamiltonian</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+
+<div class="viewcode-block" id="canvas"><a class="viewcode-back" href="../../autosummary/MonteCarlo.canvas.html#MonteCarlo.canvas">[docs]</a><span class="k">def</span> <span class="nf">canvas</span><span class="p">(</span><span class="n">with_attribution</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Placeholder function to show example docstring (NumPy format).</span>
+
+<span class="sd">    Replace this function and doc string for your own project.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    with_attribution : bool, Optional, default: True</span>
+<span class="sd">        Set whether or not to display who the quote is from.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    quote : str</span>
+<span class="sd">        Compiled string including quote and optional attribution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">quote</span> <span class="o">=</span> <span class="s2">&quot;The code is but a canvas to our imagination.&quot;</span>
+    <span class="k">if</span> <span class="n">with_attribution</span><span class="p">:</span>
+        <span class="n">quote</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">- Adapted from Henry David Thoreau&quot;</span>
+    <span class="k">return</span> <span class="n">quote</span></div>
+
+
+<span class="c1"># for now only produces the configurations with two elements, should change soon</span>
+<span class="k">def</span> <span class="nf">generateSpinConfigurations</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1">#generate spin configurations </span>
+    <span class="n">spinConfigurations</span> <span class="o">=</span> <span class="p">[]</span><span class="c1">#convert each List in spinConfigurationsLists in SpinConfiguration object</span>
+    <span class="k">for</span> <span class="n">binaryConfiguration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">spinConfigurations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spinConfiguration</span><span class="p">(</span><span class="n">binaryConfiguration</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">spinConfigurations</span>
+
+
+<span class="c1"># calculates averageEnergy, averageMagnetism, HeatCapacity, and Magnetic Susceptibility</span>
+<span class="k">def</span> <span class="nf">calculateValues</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">latticeLength</span><span class="p">):</span>
+    <span class="c1">#set k constant</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="c1">#instantiate probability variable</span>
+    <span class="n">totalProbability</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1">#instantiate lists for Energies and Probabilities</span>
+    <span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">energiesSquared</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">magnetisms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">magnetismsSquared</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+    <span class="c1">#calculate spinConfiguration</span>
+    <span class="n">spinConfigurations</span> <span class="o">=</span> <span class="n">generateSpinConfigurations</span><span class="p">(</span><span class="n">latticeLength</span><span class="p">)</span>
+    
+    <span class="c1">#calculate Energies and Magnetisms for each spin configuration</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spinConfigurations</span><span class="p">)):</span>
+<span class="c1">#         define spinConfiguration and Hamiltonian for given instance</span>
+        <span class="n">instanceSpinConfiguration</span> <span class="o">=</span> <span class="n">spinConfigurations</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">instanceHamiltonian</span> <span class="o">=</span> <span class="n">SingleDimensionHamiltionian</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">instanceSpinConfiguration</span><span class="p">)</span>
+        
+<span class="c1">#         add instance values to energies, magnetisms, and probabilities lists</span>
+        <span class="n">instanceEnergy</span> <span class="o">=</span> <span class="n">instanceHamiltonian</span><span class="o">.</span><span class="n">calculateEnergy</span><span class="p">()</span>
+        <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instanceEnergy</span><span class="p">)</span>
+        <span class="n">instanceMagnetism</span> <span class="o">=</span> <span class="n">instanceSpinConfiguration</span><span class="o">.</span><span class="n">calculateMagnetism</span><span class="p">();</span>
+        <span class="n">magnetisms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instanceMagnetism</span><span class="p">)</span>
+        <span class="n">instanceProbability</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">instanceEnergy</span><span class="p">)</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">)</span>
+        <span class="n">probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instanceProbability</span><span class="p">)</span>
+        
+<span class="c1">#         add instance probability to totalProbability</span>
+<span class="c1">#         print(&quot;instanceProbability {}: {}&quot;.format(i, instanceProbability))</span>
+        <span class="n">totalProbability</span> <span class="o">+=</span> <span class="n">instanceProbability</span>
+<span class="c1">#     print(&quot;totalprobability: {}&quot;.format(totalProbability))</span>
+<span class="c1">#     calculate Average Energy and Magnetism and EnergySquared and MagnetismSquared</span>
+    <span class="n">averageEnergyNumerator</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">averageEnergySquaredNumerator</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">averageMagnetismNumerator</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">averageMagnetismSquaredNumerator</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    
+<span class="c1">#     print(energies)</span>
+<span class="c1">#     print(probabilities)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">energies</span><span class="p">)):</span>
+<span class="c1">#         print(&quot;instanceEnergy {}: {}&quot;.format(i, energies[i]))</span>
+<span class="c1">#         print(&quot;instanceMagnetism {}: {}&quot;.format(i, magnetisms[i]))</span>
+        <span class="n">averageEnergyNumerator</span> <span class="o">+=</span> <span class="n">energies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">averageEnergySquaredNumerator</span> <span class="o">+=</span> <span class="n">energies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">energies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">averageMagnetismNumerator</span> <span class="o">+=</span> <span class="n">magnetisms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">averageMagnetismSquaredNumerator</span> <span class="o">+=</span> <span class="n">magnetisms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">magnetisms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+<span class="c1">#     print(&quot;averageEnergyNumerator: {}&quot;.format(averageEnergyNumerator))</span>
+    <span class="n">averageEnergy</span> <span class="o">=</span> <span class="n">averageEnergyNumerator</span> <span class="o">/</span> <span class="n">totalProbability</span>
+    <span class="n">averageEnergySquared</span> <span class="o">=</span> <span class="n">averageEnergySquaredNumerator</span> <span class="o">/</span> <span class="n">totalProbability</span>
+    <span class="n">averageMagnetism</span> <span class="o">=</span> <span class="n">averageMagnetismNumerator</span> <span class="o">/</span> <span class="n">totalProbability</span>
+    <span class="n">averageMagnetismSquared</span> <span class="o">=</span> <span class="n">averageMagnetismSquaredNumerator</span> <span class="o">/</span> <span class="n">totalProbability</span>
+
+    <span class="c1"># return results as a dictionary</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;averageEnergy&quot;</span><span class="p">:</span> <span class="n">averageEnergy</span><span class="p">,</span> 
+            <span class="s2">&quot;averageEnergySquared&quot;</span><span class="p">:</span> <span class="n">averageEnergySquared</span><span class="p">,</span>
+            <span class="s2">&quot;averageMagnetism&quot;</span><span class="p">:</span> <span class="n">averageMagnetism</span><span class="p">,</span>
+            <span class="s2">&quot;averageMagnetismSquared&quot;</span><span class="p">:</span> <span class="n">averageMagnetismSquared</span><span class="p">,</span>
+            <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">temperature</span><span class="p">,</span>
+            <span class="s2">&quot;partition&quot;</span><span class="p">:</span> <span class="n">totalProbability</span>
+           <span class="p">}</span>
+
+
+
+<span class="c1"># function to calculate heat capacity</span>
+<span class="k">def</span> <span class="nf">calculateHeatCapacity</span><span class="p">(</span><span class="n">averageEnergySquared</span><span class="p">,</span> <span class="n">averageEnergy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">#      (&lt;EE&gt; - &lt;E&gt;&lt;E&gt; ) / (kTT)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">averageEnergySquared</span> <span class="o">-</span> <span class="p">(</span><span class="n">averageEnergy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    
+
+<span class="c1"># function to calculate magnetic susceptibility</span>
+<span class="k">def</span> <span class="nf">calculateMagneticSusceptibilty</span><span class="p">(</span><span class="n">averageMagnetismSquared</span><span class="p">,</span> <span class="n">averageMagnetism</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>       
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>                                        
+    <span class="c1"># (&lt;MM&gt; - &lt;M&gt;&lt;M&gt; ) / (kT)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">averageMagnetismSquared</span> <span class="o">-</span> <span class="p">(</span><span class="n">averageMagnetism</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">printValues</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="n">valuesDict</span> <span class="o">=</span> <span class="n">calculateValues</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;averageEnergy: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageEnergy&quot;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;averageMagnetism: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageMagnetism&quot;</span><span class="p">]))</span>
+    
+    <span class="n">heatCap</span> <span class="o">=</span> <span class="n">calculateHeatCapacity</span><span class="p">(</span><span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageEnergySquared&quot;</span><span class="p">],</span> <span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageEnergy&quot;</span><span class="p">],</span> <span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;heatCapacity: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">heatCap</span><span class="p">))</span>
+    
+    <span class="n">magSusc</span> <span class="o">=</span> <span class="n">calculateMagneticSusceptibilty</span><span class="p">(</span><span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageMagnetismSquared&quot;</span><span class="p">],</span> <span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;averageMagnetism&quot;</span><span class="p">],</span> <span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;magSusc: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">magSusc</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;partition: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">valuesDict</span><span class="p">[</span><span class="s2">&quot;partition&quot;</span><span class="p">]))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HELLO WORLD&quot;</span><span class="p">)</span>
+    <span class="n">temperatureValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">averageEnergyValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">averageMagnetismValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heatCapacityValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">magneticSusceptibilityValues</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">currentTemp</span> <span class="o">=</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">10</span>
+        <span class="n">temperatureValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">currentTemp</span><span class="p">)</span>
+    <span class="c1">#     call calculateValues</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">calculateValues</span><span class="p">(</span><span class="n">currentTemp</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="c1">#     add averageEnergy and averageMagnetism values to lists</span>
+        <span class="n">averageEnergyValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageEnergy&quot;</span><span class="p">])</span>
+        
+        <span class="n">averageMagnetismValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageMagnetism&quot;</span><span class="p">])</span>
+        
+    <span class="c1">#     add heatCapacity value to list</span>
+        <span class="n">heatCapacityValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculateHeatCapacity</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageEnergySquared&quot;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageEnergy&quot;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]))</span>
+    <span class="c1"># add magnetic susceptibility value to list</span>
+        <span class="n">magneticSusceptibilityValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculateMagneticSusceptibilty</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageMagnetismSquared&quot;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;averageMagnetism&quot;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Daniel Rosen. Project structure based on the Computational Molecular Science Python Cookiecutter version 1.6.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+MonteCarlo.tests package
+========================
+
+Submodules
+----------
+
+MonteCarlo.tests.test\_MonteCarlo module
+----------------------------------------
+
+.. automodule:: MonteCarlo.tests.test_MonteCarlo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+MonteCarlo.tests.test\_SingleDimensionHamiltonian module
+--------------------------------------------------------
+
+.. automodule:: MonteCarlo.tests.test_SingleDimensionHamiltonian
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+MonteCarlo.tests.test\_SpinConfiguration module
+-----------------------------------------------
+
+.. automodule:: MonteCarlo.tests.test_SpinConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: MonteCarlo.tests
+   :members:
+   :undoc-members:
+   :show-inheritance:
