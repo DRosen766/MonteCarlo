@@ -1,6 +1,6 @@
 # Import package, test suite, and other packages as needed
 import sys
-from bitarray import test
+# from bitarray import test
 
 import pytest
 
