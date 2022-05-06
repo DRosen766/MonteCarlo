@@ -4,7 +4,7 @@
 # import classes
 from .SpinConfiguration import *
 from .SingleDimensionHamiltonian import *
-
+import math
 
 
 def canvas(with_attribution=True):
@@ -62,7 +62,7 @@ def calculateValues(temperature, J, mu, latticeLength):
     for i in range(len(spinConfigurations)):
 #         define spinConfiguration and Hamiltonian for given instance
         instanceSpinConfiguration = spinConfigurations[i];
-        instanceHamiltonian = SingleDimensionHamiltionian(J, mu, instanceSpinConfiguration)
+        instanceHamiltonian = SingleDimensionHamiltonian(J, mu, instanceSpinConfiguration)
         
 #         add instance values to energies, magnetisms, and probabilities lists
         instanceEnergy = instanceHamiltonian.calculateEnergy()

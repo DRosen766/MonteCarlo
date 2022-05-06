@@ -12,6 +12,7 @@ class spinConfiguration:
 
     def __init__(self, binaryConfiguration, numElements):
         #     number of elements in list of spins
+        self.binaryConfiguration = binaryConfiguration
         self.numElements = numElements
         self.spins = self.getSpins(binaryConfiguration)
 
@@ -47,3 +48,7 @@ class spinConfiguration:
         for i in range(self.numElements):
             magnetism += self.spins[i]
         return magnetism
+
+
+
+        

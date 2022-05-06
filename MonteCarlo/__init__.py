@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from .Ising import *
 from .SpinConfiguration import *
 from .SingleDimensionHamiltonian import *
-
+from .MonteCarloSampling import *
 # Handle versioneer
 from ._version import get_versions
 versions = get_versions()

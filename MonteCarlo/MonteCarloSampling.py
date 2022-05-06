@@ -1,71 +1,87 @@
 from matplotlib import pyplot as plt
 from MonteCarlo.Ising import calculateValues
-from SpinConfiguration import spinConfiguration
-from SingleDimensionHamiltonian import SingleDimensionHamiltonian
+from .SpinConfiguration import spinConfiguration
+from .SingleDimensionHamiltonian import SingleDimensionHamiltonian
 import math
 import numpy as np
 
 
-# number of steps to calculate average
-steps = 10
-# define constants
-J = -1
-mu = 1.1
-temperature = 1
 
 
 
 
-n = 6 # number of sites
-currentSpinConfiguration = spinConfiguration(0, n)
-originalHamiltonian = SingleDimensionHamiltonian(J, mu, currentSpinConfiguration)
-originalEnergy = originalHamiltonian.calculateEnergy()
-originalProbability = math.e ** ((-1 * originalEnergy) / temperature)
-averageEnergyNumerator = originalEnergy * originalProbability
-totalProbability = originalProbability;
-averageEnergyList = []
+class MonteCarloSampling:
+    """Class for Monte Carlo Sampling
 
-# def sweep():
-for _ in range(0, steps):
-    randomBit = np.random.randint(n)
-    # flip random bit in spinConfiguration
-    currentSpinConfigurationSpinList = currentSpinConfiguration.spins
-    if(currentSpinConfigurationSpinList[randomBit] == -1):
-        currentSpinConfigurationSpinList[randomBit] = 1
-    else:
-        currentSpinConfigurationSpinList[randomBit] = -1
-    currentSpinConfiguration.spins = currentSpinConfigurationSpinList
+    :param steps: number of samples that will be taken during the sweep
+    :param sites: number of sites in Spin Configuration being samples
+    :param J: a constant that determines the energy scale
+    :param mu: a constant that represents the magnetic moment of the system
+    :param temperature: temperature of the system
+    """
 
-    # currentBinaryConfiguration += 1 # this should flip a random bit, not increment the binary config
-    newHamiltonian = SingleDimensionHamiltonian(J, mu, currentSpinConfiguration)
-    newHamiltonianEnergy = newHamiltonian.calculateEnergy()
-    energyDifference = newHamiltonianEnergy - originalEnergy
-    newProbability = math.e ** ((-1 * newHamiltonianEnergy) / temperature)
-    if(energyDifference >= 0):
-        averageEnergyNumerator += newHamiltonianEnergy * newProbability
-        totalProbability += newProbability
-        originalHamiltonian = newHamiltonian
-    else:
-        # temporarily do nothing
-        # should use a random number to determine if jump should occur
-        probabilityDifference = newProbability / originalProbability
+    def __init__(self, steps, sites, J, mu, temperature, plot=False):
+        # number of steps to calculate average
+        self.steps = steps
+        # number of sites in spin configuration
+        self.sites = sites
 
-        if(np.random.rand() < probabilityDifference):
-            averageEnergyNumerator += newHamiltonianEnergy * newProbability
-            totalProbability += newProbability
-            originalHamiltonian = newHamiltonian
-    averageEnergyList.append(averageEnergyNumerator / totalProbability)
+        # define constants
+        self.J = J
+        self.mu = mu
+
+        self.temperature = temperature
+
+    def sweep(self):
+        """Function for using random sampling to estimate the energy of a spin configuration
+        """
+        # instantiate values that will be used for this function
+        currentSpinConfiguration = spinConfiguration(0, self.sites)
+        oldHamiltonian = SingleDimensionHamiltonian(self.J, self.mu, currentSpinConfiguration)
+        oldEnergy = oldHamiltonian.calculateEnergy()
+        oldProbability = math.e ** ((-1 * oldEnergy) / self.temperature)
+        averageEnergyNumerator = oldEnergy * oldProbability
+        totalProbability = oldProbability
+        averageEnergyList = []
+        for _ in range(0, self.steps):
+            randomBit = np.random.randint(self.sites)
+            # flip random bit in spinConfiguration
+            currentSpinConfigurationSpinList = currentSpinConfiguration.spins
+            if(currentSpinConfigurationSpinList[randomBit] == -1):
+                currentSpinConfigurationSpinList[randomBit] = 1
+            else:
+                currentSpinConfigurationSpinList[randomBit] = -1
+            currentSpinConfiguration.spins = currentSpinConfigurationSpinList
+            print(currentSpinConfiguration.spins)
+
+            # currentBinaryConfiguration += 1 # this should flip a random bit, not increment the binary config
+            newHamiltonian = SingleDimensionHamiltonian(self.J, self.mu, currentSpinConfiguration)
+            newHamiltonianEnergy = newHamiltonian.calculateEnergy()
+            energyDifference = newHamiltonianEnergy - oldEnergy
+            newProbability = math.e ** ((-1 * newHamiltonianEnergy) / self.temperature)
+            if(energyDifference >= 0):
+                averageEnergyNumerator += newHamiltonianEnergy * newProbability
+                totalProbability += newProbability
+                originalHamiltonian = newHamiltonian
+            else:
+                # use a random number to determine if jump should occur
+                probabilityDifference = newProbability / oldProbability
+
+                if(np.random.rand() < probabilityDifference):
+                    averageEnergyNumerator += newHamiltonianEnergy * newProbability
+                    totalProbability += newProbability
+                    originalHamiltonian = newHamiltonian
+            averageEnergyList.append(averageEnergyNumerator / totalProbability)
 
 
 
-# for _ in range(steps):
-#     sweep()
+        # py
+        stepNums = [step for step in range(self.steps)]
+        actualAverage = np.full(self.steps, calculateValues(self.temperature, self.J, self.mu, self.sites)["averageEnergy"])
+        plt.plot(stepNums, actualAverage)
+        plt.plot(stepNums, averageEnergyList)
+        plt.show()
 
 
-
-# py
-stepNums = [step for step in range(steps)]
-actualAverage = np.full(steps, calculateValues(temperature, J, mu, n)["averageEnergy"])
-plt.plot(stepNums, actualAverage)
-plt.plot(stepNums, averageEnergyList)
-plt.show()
+mcSampling = MonteCarloSampling(30, 6, -1.1, 2, 10)
+mcSampling.sweep()
