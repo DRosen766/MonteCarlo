@@ -2,33 +2,10 @@
 
 
 # import classes
-from .SpinConfiguration import *
-from .SingleDimensionHamiltonian import *
+from MonteCarlo.SpinConfiguration import *
+from MonteCarlo.SingleDimensionHamiltonian import *
+import matplotlib.pyplot as plt
 import math
-
-
-def canvas(with_attribution=True):
-    """
-    Placeholder function to show example docstring (NumPy format).
-
-    Replace this function and doc string for your own project.
-
-    Parameters
-    ----------
-    with_attribution : bool, Optional, default: True
-        Set whether or not to display who the quote is from.
-
-    Returns
-    -------
-    quote : str
-        Compiled string including quote and optional attribution.
-    """
-
-    quote = "The code is but a canvas to our imagination."
-    if with_attribution:
-        quote += "\n\t- Adapted from Henry David Thoreau"
-    return quote
-
 
 # for now only produces the configurations with two elements, should change soon
 def generateSpinConfigurations(n):
@@ -138,7 +115,6 @@ def printValues(temp, J, mu):
 
 
 if __name__ == "__main__":
-    print("HELLO WORLD")
     temperatureValues = []
     averageEnergyValues = []
     averageMagnetismValues = []
@@ -158,3 +134,12 @@ if __name__ == "__main__":
         heatCapacityValues.append(calculateHeatCapacity(values["averageEnergySquared"], values["averageEnergy"], values["temperature"]))
     # add magnetic susceptibility value to list
         magneticSusceptibilityValues.append(calculateMagneticSusceptibilty(values["averageMagnetismSquared"], values["averageMagnetism"], values["temperature"]))
+
+    # plot average energy values
+    plt.plot(temperatureValues, averageEnergyValues, label="<E>")
+    plt.plot(temperatureValues, averageMagnetismValues, label="<M>")
+    plt.plot(temperatureValues, heatCapacityValues, label="Heat Capacity")
+    plt.plot(temperatureValues, magneticSusceptibilityValues, label="Magnetic Susceptibility")
+    plt.legend()
+    plt.show()
+

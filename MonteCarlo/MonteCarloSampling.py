@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from MonteCarlo.Ising import calculateValues
-from .SpinConfiguration import spinConfiguration
-from .SingleDimensionHamiltonian import SingleDimensionHamiltonian
+from MonteCarlo.SpinConfiguration import *
+from MonteCarlo.SingleDimensionHamiltonian import *
 import math
 import numpy as np
 
@@ -82,6 +82,6 @@ class MonteCarloSampling:
         plt.plot(stepNums, averageEnergyList)
         plt.show()
 
-
-mcSampling = MonteCarloSampling(30, 6, -1.1, 2, 10)
-mcSampling.sweep()
+# if __name__ == "__main__":
+#     mcSampling = MonteCarloSampling(30, 6, -1.1, 2, 10)
+#     mcSampling.sweep()

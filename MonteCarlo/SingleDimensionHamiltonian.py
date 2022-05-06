@@ -1,4 +1,4 @@
-from .SpinConfiguration import *
+from MonteCarlo.SpinConfiguration import *
 
 """
 Module containing the SingleDimensionHamiltonian class
