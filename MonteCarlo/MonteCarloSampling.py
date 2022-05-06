@@ -1,3 +1,4 @@
+import matplotlib
 from matplotlib import pyplot as plt
 from MonteCarlo.Ising import calculateValues
 from MonteCarlo.SpinConfiguration import *

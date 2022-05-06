@@ -1,6 +1,7 @@
 """Package for Ising Hamiltonian"""
 # import python packages
 import math
+import matplotlib
 import matplotlib.pyplot as plt
 
 # Add imports here
