@@ -82,6 +82,6 @@ class MonteCarloSampling:
         plt.plot(stepNums, averageEnergyList)
         plt.show()
 
-# if __name__ == "__main__":
-#     mcSampling = MonteCarloSampling(30, 6, -1.1, 2, 10)
-#     mcSampling.sweep()
+if __name__ == "__main__":
+    mcSampling = MonteCarloSampling(30, 6, -1.1, 2, 10)
+    mcSampling.sweep()
