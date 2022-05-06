@@ -13,6 +13,12 @@ This repository is currently under development. To do a development install, dow
 
 in the repository directory.
 
+### Usage Instructions
+
+`python MonteCarlo\Ising.py` from root directory to run Ising Hamiltonian calculations and plot results
+
+`python MonteCarlo\MonteCarloSampling.py` from root directory to run MonteCarlo Sweep on Hamiltonian and plot results agains actual values
+
 ### Copyright
 
 Copyright (c) 2022, Daniel Rosen
