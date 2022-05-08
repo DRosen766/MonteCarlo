@@ -4,7 +4,7 @@ MonteCarlo
 [![GitHub Actions Build Status](https://github.com/DRosen766/MonteCarlo/workflows/CI/badge.svg)](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/actions?query=workflow%3ACI)
 [![codecov](https://codecov.io/gh/DRosen766/MonteCarlo/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/MonteCarlo/branch/master)
 <a href="https://drosen766-montecarlo.readthedocs.io/en/latest/" alt="docsbadge">
-    <img src="https://img.shields.io/readthedocs/drosen766-montecarlo" /></a>
+    <img src="https://img.shields.io/readthedocs/drosen766-montecarlo?color=pink" /></a>
 
 Package for Ising Hamiltonian
 
