@@ -12,15 +12,24 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-# Incase the project was not installed
+
+
 import os
 import sys
+import mock
 sys.path.insert(0, os.path.abspath('..'))
-
+# handle import of modules
+MOCK_MODULES = ['numpy', 'matplotlib', 'matplotlib.pyplot']
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = mock.Mock()
+    
+# Incase the project was not installed
 import MonteCarlo
 
 
+
 # -- Project information -----------------------------------------------------
+autodoc_mock_imports = ['_tkinter']
 
 project = 'MonteCarlo'
 copyright = ("2022, Daniel Rosen. Project structure based on the "
