@@ -38,7 +38,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Class Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#module-MonteCarlo.SingleDimensionHamiltonian">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#module-MonteCarlo.Ising">API Documentation</a></li>
 </ul>
 
         </div>
@@ -71,6 +71,7 @@
  <a href="#C"><strong>C</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  | <a href="#S"><strong>S</strong></a>
  
 </div>
@@ -79,11 +80,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateEnergy">calculateEnergy() (MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian.calculateHamiltonian">calculateHamiltonian() (MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian method)</a>
 </li>
+      <li><a href="api.html#MonteCarlo.Ising.calculateHeatCapacity">calculateHeatCapacity() (in module MonteCarlo.Ising)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#MonteCarlo.Ising.calculateMagneticSusceptibilty">calculateMagneticSusceptibilty() (in module MonteCarlo.Ising)</a>
+</li>
       <li><a href="api.html#MonteCarlo.SpinConfiguration.spinConfiguration.calculateMagnetism">calculateMagnetism() (MonteCarlo.SpinConfiguration.spinConfiguration method)</a>
+</li>
+      <li><a href="api.html#MonteCarlo.Ising.calculateValues">calculateValues() (in module MonteCarlo.Ising)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -91,10 +98,12 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#MonteCarlo.SpinConfiguration.spinConfiguration.getNumElements">getNumElements() (MonteCarlo.SpinConfiguration.spinConfiguration method)</a>
+      <li><a href="api.html#MonteCarlo.Ising.generateSpinConfigurations">generateSpinConfigurations() (in module MonteCarlo.Ising)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#MonteCarlo.SpinConfiguration.spinConfiguration.getNumElements">getNumElements() (MonteCarlo.SpinConfiguration.spinConfiguration method)</a>
+</li>
       <li><a href="api.html#MonteCarlo.SpinConfiguration.spinConfiguration.getSpins">getSpins() (MonteCarlo.SpinConfiguration.spinConfiguration method)</a>
 </li>
   </ul></td>
@@ -107,13 +116,31 @@
     module
 
       <ul>
+        <li><a href="api.html#module-MonteCarlo.Ising">MonteCarlo.Ising</a>
+</li>
+        <li><a href="api.html#module-MonteCarlo.MonteCarloSampling">MonteCarlo.MonteCarloSampling</a>
+</li>
         <li><a href="api.html#module-MonteCarlo.SingleDimensionHamiltonian">MonteCarlo.SingleDimensionHamiltonian</a>
 </li>
         <li><a href="api.html#module-MonteCarlo.SpinConfiguration">MonteCarlo.SpinConfiguration</a>
 </li>
       </ul></li>
+      <li>
+    MonteCarlo.Ising
+
+      <ul>
+        <li><a href="api.html#module-MonteCarlo.Ising">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    MonteCarlo.MonteCarloSampling
+
+      <ul>
+        <li><a href="api.html#module-MonteCarlo.MonteCarloSampling">module</a>
+</li>
+      </ul></li>
       <li>
     MonteCarlo.SingleDimensionHamiltonian
 
@@ -128,6 +155,20 @@
         <li><a href="api.html#module-MonteCarlo.SpinConfiguration">module</a>
 </li>
       </ul></li>
+      <li><a href="api.html#MonteCarlo.MonteCarloSampling.MonteCarloSampling">MonteCarloSampling (class in MonteCarlo.MonteCarloSampling)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#MonteCarlo.Ising.plotValues">plotValues() (in module MonteCarlo.Ising)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#MonteCarlo.Ising.printValues">printValues() (in module MonteCarlo.Ising)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -139,6 +180,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#MonteCarlo.SpinConfiguration.spinConfiguration">spinConfiguration (class in MonteCarlo.SpinConfiguration)</a>
+</li>
+      <li><a href="api.html#MonteCarlo.MonteCarloSampling.MonteCarloSampling.sweep">sweep() (MonteCarlo.MonteCarloSampling.MonteCarloSampling method)</a>
 </li>
   </ul></td>
 </tr></table>

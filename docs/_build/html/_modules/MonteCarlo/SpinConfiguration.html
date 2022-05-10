@@ -80,6 +80,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binaryConfiguration</span><span class="p">,</span> <span class="n">numElements</span><span class="p">):</span>
         <span class="c1">#     number of elements in list of spins</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">binaryConfiguration</span> <span class="o">=</span> <span class="n">binaryConfiguration</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">numElements</span> <span class="o">=</span> <span class="n">numElements</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getSpins</span><span class="p">(</span><span class="n">binaryConfiguration</span><span class="p">)</span>
 
@@ -115,6 +116,10 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numElements</span><span class="p">):</span>
             <span class="n">magnetism</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">magnetism</span></div></div>
+
+
+
+        
 </pre></div>
 
            </div>

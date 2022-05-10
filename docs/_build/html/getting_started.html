@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Documentation" href="api.html" />
+    <link rel="next" title="Class Overview" href="api.html" />
     <link rel="prev" title="Welcome to MonteCarlo’s documentation!" href="index.html" /> 
 </head>
 
@@ -39,8 +39,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#theory">Theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#module-MonteCarlo.Ising">API Documentation</a></li>
 </ul>
 
         </div>
@@ -69,7 +73,135 @@
              
   <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
-<p>This page details how to get started with MonteCarlo.</p>
+<p> To do a development install, download this repository and type <b>pip install -e .</b>in the root directory.</p>
+<P>
+    <b>python MonteCarlo\Ising.py</b> from root directory to run Ising Hamiltonian calculations and plot results
+</P>
+<p>
+    <b>python MonteCarlo\MonteCarloSampling.py</b> from root directory to run MonteCarlo Sweep on Hamiltonian and plot results agains actual values
+</p>
+
+<h2>Modules and Examples</h2>
+<p>The examples in this section provides an overview of how to use each module and class.  The details of how all values are calculated in the class overview</p>
+<h3><a href="file:///C:/Users/Acemc/PHYS3684/MonteCarlo/docs/_build/html/api.html#module-MonteCarlo.Ising">Ising</a></h3>
+<p>
+    This module includes a set of functions that are used to calculate and plot the average energy, average magnetism, heat capacity, and magnetic susceptibility for a one dimensional lattices of a given length.
+    Do do this, all possible spin configurations with the appropriate length are calculated.  The above values are calculated at a given temperature and the process is repeated for all temperatures in some range.
+</p><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import dependencies</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># import package and submodules</span>
+<span class="kn">import</span> <span class="nn">MonteCarlo</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">Ising</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">SpinConfiguration</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">SingleDimensionHamiltonian</span>
+
+<span class="c1"># assign the length of the spin configurations</span>
+<span class="n">latticeLength</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># create new list of spinConfiguration objects</span>
+<span class="n">spinConfigList</span> <span class="o">=</span> <span class="n">MonteCarlo</span><span class="o">.</span><span class="n">Ising</span><span class="o">.</span><span class="n">generateSpinConfigurations</span><span class="p">(</span><span class="n">latticeLength</span><span class="p">)</span>
+
+<span class="c1"># print each spinConfigurations spins in binary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;spinCongfigurations: &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">spinConfigList</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">spins</span><span class="p">)</span>
+
+<span class="c1"># define temperature, J constant, mu constant, and lattice length</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">J</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.1</span>
+<span class="n">latticeLength</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># calculate a dictionary of values</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">MonteCarlo</span><span class="o">.</span><span class="n">Ising</span><span class="o">.</span><span class="n">calculateValues</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">latticeLength</span><span class="p">)</span>
+
+<span class="c1"># call function do display the result of calling the above function</span>
+<span class="c1"># note: this will rerun the above function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Values: &quot;</span><span class="p">)</span>
+<span class="n">MonteCarlo</span><span class="o">.</span><span class="n">Ising</span><span class="o">.</span><span class="n">printValues</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">latticeLength</span><span class="p">)</span>
+
+
+
+<span class="c1"># call funtion to produce a plot of the results of the above function for temperatures between .1 and a maximum temp that you determine</span>
+<span class="n">maxTemp</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">MonteCarlo</span><span class="o">.</span><span class="n">Ising</span><span class="o">.</span><span class="n">plotValues</span><span class="p">(</span><span class="n">maxTemp</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">latticeLength</span><span class="p">)</span>
+</pre></div>
+</div>
+<h3><a href="file:///C:/Users/Acemc/PHYS3684/MonteCarlo/docs/_build/html/api.html#module-MonteCarlo.SpinConfiguration">Spin Configuration
+</a></h3>
+<p>
+    This module contains the spinConfiguration class which includes functions for converting a bitstring into spins and calculating a spinConfiguration's magnetism.
+</p><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import dependencies</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># import package and submodules</span>
+<span class="kn">import</span> <span class="nn">MonteCarlo</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">SpinConfiguration</span>
+<span class="c1"># import spinConfiguration class from SpinConfiguration Module</span>
+<span class="kn">from</span>  <span class="nn">MonteCarlo.SpinConfiguration</span> <span class="kn">import</span> <span class="n">spinConfiguration</span>
+
+<span class="c1"># select the lattice length for this spinConfiguration\</span>
+<span class="n">latticeLength</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># select a decimal value that will be converted into a binary representation of the spins of this spinConfiguration</span>
+<span class="c1"># note this value must be between 0 and 2^latticeLength</span>
+<span class="n">binaryConfiguration</span> <span class="o">=</span> <span class="mi">4</span>
+
+
+<span class="n">spinConfig</span> <span class="o">=</span> <span class="n">spinConfiguration</span><span class="p">(</span><span class="n">binaryConfiguration</span><span class="p">,</span> <span class="n">latticeLength</span><span class="p">)</span>
+
+<span class="c1"># display the converted binary representation of the integer that you entered</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spins: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spinConfig</span><span class="o">.</span><span class="n">spins</span><span class="p">))</span>
+
+
+<span class="c1"># calculate and display the magnetism value of this spinConfiguration object</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Magnetism: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spinConfig</span><span class="o">.</span><span class="n">calculateMagnetism</span><span class="p">()))</span>
+</pre></div>
+</div>
+<h3><a href="file:///C:/Users/Acemc/PHYS3684/MonteCarlo/docs/_build/html/api.html#module-MonteCarlo.SingleDimensionHamiltonian">Single Dimension Hamiltonian</a></h3>
+<p>
+    This module contains the SingleDimensionHamiltonian class which includes functions for building a hamiltonian from a given spin configuration and calculating its energy.
+</p><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import dependencies</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># import package and submodules</span>
+<span class="kn">import</span> <span class="nn">MonteCarlo</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">SpinConfiguration</span>
+<span class="kn">from</span> <span class="nn">MonteCarlo</span> <span class="kn">import</span> <span class="n">SingleDimensionHamiltonian</span>
+
+<span class="c1"># import SingleDimensionHamiltonian and spinConfiguration class</span>
+<span class="kn">from</span>  <span class="nn">MonteCarlo.SpinConfiguration</span> <span class="kn">import</span> <span class="n">spinConfiguration</span>
+<span class="kn">from</span>  <span class="nn">MonteCarlo.SingleDimensionHamiltonian</span> <span class="kn">import</span> <span class="n">SingleDimensionHamiltonian</span>
+
+<span class="c1"># create a spinConfiguration object</span>
+<span class="n">spinConfig</span> <span class="o">=</span> <span class="n">spinConfiguration</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+
+<span class="c1"># define J and mu constants</span>
+<span class="n">J</span>  <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.1</span>
+
+<span class="c1"># create a hamiltonian object</span>
+<span class="n">ham</span> <span class="o">=</span> <span class="n">SingleDimensionHamiltonian</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">spinConfig</span><span class="p">)</span>
+
+<span class="c1"># calculate and display the energy of this hamiltonian</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Energy: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ham</span><span class="o">.</span><span class="n">calculateEnergy</span><span class="p">()))</span>
+</pre></div>
+</div>
+<section id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline"></a></h2>
+<p>This package uses the Ising mathematical model in order to calculate the energy of a Hamiltonian.</p>
+</section>
 </section>
 
 
@@ -77,7 +209,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to MonteCarlo’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="Class Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

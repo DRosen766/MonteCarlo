@@ -41,7 +41,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Class Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#module-MonteCarlo.SingleDimensionHamiltonian">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-MonteCarlo.Ising">API Documentation</a></li>
 </ul>
 
         </div>
@@ -79,9 +79,75 @@
 </tbody>
 </table>
 </section>
-<section id="module-MonteCarlo.SingleDimensionHamiltonian">
-<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-MonteCarlo.SingleDimensionHamiltonian" title="Permalink to this headline"></a></h1>
-<dl class="py class">
+<section id="module-MonteCarlo.Ising">
+<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-MonteCarlo.Ising" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.calculateHeatCapacity">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">calculateHeatCapacity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">averageEnergySquared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">averageEnergy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#calculateHeatCapacity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.calculateHeatCapacity" title="Permalink to this definition"></a></dt>
+<dd><p>function to calculate heat capacity
+(&lt;EE&gt; - &lt;E&gt;&lt;E&gt; ) / (kTT)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.calculateMagneticSusceptibilty">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">calculateMagneticSusceptibilty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">averageMagnetismSquared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">averageMagnetism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#calculateMagneticSusceptibilty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.calculateMagneticSusceptibilty" title="Permalink to this definition"></a></dt>
+<dd><p>function to calculate magnetic susceptibility
+(&lt;MM&gt; - &lt;M&gt;&lt;M&gt; ) / (kT)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.calculateValues">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">calculateValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latticeLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#calculateValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.calculateValues" title="Permalink to this definition"></a></dt>
+<dd><p>calculates averageEnergy, averageMagnetism, HeatCapacity, and Magnetic Susceptibility</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> – temperature of system</p></li>
+<li><p><strong>J</strong> – a constant that determines the energy scale</p></li>
+<li><p><strong>mu</strong> – a constant that represents the magnetic moment of the system</p></li>
+<li><p><strong>latticeLength</strong> – number of sites in spinConfigurations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.generateSpinConfigurations">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">generateSpinConfigurations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#generateSpinConfigurations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.generateSpinConfigurations" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates a list of all possible spin configurations with a given number of sites</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – number of sites in each spin configuration</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#MonteCarlo.SpinConfiguration.spinConfiguration" title="MonteCarlo.SpinConfiguration.spinConfiguration">spinConfiguration</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.plotValues">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">plotValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxTemp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latticeLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#plotValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.plotValues" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate and plot values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maxTemp</strong> – maximum tempurate that energy will be plotted to</p></li>
+<li><p><strong>J</strong> – a constant that determines the energy scale</p></li>
+<li><p><strong>mu</strong> – a constant that represents the magnetic moment of the system</p></li>
+<li><p><strong>latticeLength</strong> – number of sites in spinConfigurations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="MonteCarlo.Ising.printValues">
+<span class="sig-prename descclassname"><span class="pre">MonteCarlo.Ising.</span></span><span class="sig-name descname"><span class="pre">printValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latticeLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/Ising.html#printValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.Ising.printValues" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate and print values to output</p>
+</dd></dl>
+
+<span class="target" id="module-MonteCarlo.SingleDimensionHamiltonian"></span><dl class="py class">
 <dt class="sig sig-object py" id="MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">MonteCarlo.SingleDimensionHamiltonian.</span></span><span class="sig-name descname"><span class="pre">SingleDimensionHamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spinConfiguration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/SingleDimensionHamiltonian.html#SingleDimensionHamiltonian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.SingleDimensionHamiltonian.SingleDimensionHamiltonian" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -163,6 +229,30 @@
 <dd class="field-odd"><p>List[int]</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-MonteCarlo.MonteCarloSampling"></span><dl class="py class">
+<dt class="sig sig-object py" id="MonteCarlo.MonteCarloSampling.MonteCarloSampling">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">MonteCarlo.MonteCarloSampling.</span></span><span class="sig-name descname"><span class="pre">MonteCarloSampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sites</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/MonteCarloSampling.html#MonteCarloSampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.MonteCarloSampling.MonteCarloSampling" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for Monte Carlo Sampling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>steps</strong> – number of samples that will be taken during the sweep</p></li>
+<li><p><strong>sites</strong> – number of sites in Spin Configuration being samples</p></li>
+<li><p><strong>J</strong> – a constant that determines the energy scale</p></li>
+<li><p><strong>mu</strong> – a constant that represents the magnetic moment of the system</p></li>
+<li><p><strong>temperature</strong> – temperature of the system</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MonteCarlo.MonteCarloSampling.MonteCarloSampling.sweep">
+<span class="sig-name descname"><span class="pre">sweep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MonteCarlo/MonteCarloSampling.html#MonteCarloSampling.sweep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MonteCarlo.MonteCarloSampling.MonteCarloSampling.sweep" title="Permalink to this definition"></a></dt>
+<dd><p>Function for using random sampling to estimate the energy of a spin configuration</p>
 </dd></dl>
 
 </dd></dl>
