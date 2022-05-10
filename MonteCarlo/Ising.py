@@ -1,4 +1,3 @@
-"""Provide the primary functions."""
 
 
 # import classes
@@ -9,6 +8,12 @@ import math
 
 # for now only produces the configurations with two elements, should change soon
 def generateSpinConfigurations(n):
+    """Calculates a list of all possible spin configurations with a given number of sites
+
+    :param n: number of sites in each spin configuration
+    :type n: int
+    :rtype: List[spinConfiguration]
+    """
     #generate spin configurations 
     spinConfigurations = []#convert each List in spinConfigurationsLists in SpinConfiguration object
     for binaryConfiguration in range(2 ** n):
@@ -17,8 +22,14 @@ def generateSpinConfigurations(n):
     return spinConfigurations
 
 
-# calculates averageEnergy, averageMagnetism, HeatCapacity, and Magnetic Susceptibility
 def calculateValues(temperature, J, mu, latticeLength):
+    """calculates averageEnergy, averageMagnetism, HeatCapacity, and Magnetic Susceptibility
+
+    :param temperature: temperature of system
+    :param J: a constant that determines the energy scale
+    :param mu: a constant that represents the magnetic moment of the system
+    :param latticeLength: number of sites in spinConfigurations
+    """
     #set k constant
     k = 1
     
@@ -87,22 +98,26 @@ def calculateValues(temperature, J, mu, latticeLength):
 
 
 
-# function to calculate heat capacity
 def calculateHeatCapacity(averageEnergySquared, averageEnergy, temperature):
+    """function to calculate heat capacity
+        (<EE> - <E><E> ) / (kTT)
+    """
     k = 1
-    #      (<EE> - <E><E> ) / (kTT)
     return (averageEnergySquared - (averageEnergy ** 2)) / (k * (temperature ** 2))
     
 
-# function to calculate magnetic susceptibility
 def calculateMagneticSusceptibilty(averageMagnetismSquared, averageMagnetism, temperature):       
+    """function to calculate magnetic susceptibility
+        (<MM> - <M><M> ) / (kT)
+    """
     k = 1                                        
-    # (<MM> - <M><M> ) / (kT)
     return (averageMagnetismSquared - (averageMagnetism ** 2)) / (k * temperature)
 
 
-def printValues(temp, J, mu):
-    valuesDict = calculateValues(temp, J, mu)
+def printValues(temp, J, mu, latticeLength):
+    """Calculate and print values to output
+    """ 
+    valuesDict = calculateValues(temp, J, mu, latticeLength)
     print("averageEnergy: {}".format(valuesDict["averageEnergy"]))
     print("averageMagnetism: {}".format(valuesDict["averageMagnetism"]))
     
@@ -114,17 +129,24 @@ def printValues(temp, J, mu):
     print("partition: {}".format(valuesDict["partition"]))
 
 
-if __name__ == "__main__":
+def plotValues(maxTemp, J, mu, latticeLength):
+    """Calculate and plot values
+        
+        :param maxTemp: maximum tempurate that energy will be plotted to
+        :param J: a constant that determines the energy scale
+        :param mu: a constant that represents the magnetic moment of the system
+        :param latticeLength: number of sites in spinConfigurations
+    """
     temperatureValues = []
     averageEnergyValues = []
     averageMagnetismValues = []
     heatCapacityValues = []
     magneticSusceptibilityValues = []
-    for t in range(1,100):
+    for t in range(1,maxTemp * 10):
         currentTemp = t / 10
         temperatureValues.append(currentTemp)
     #     call calculateValues
-        values = calculateValues(currentTemp, -2, 1.1, 8)
+        values = calculateValues(currentTemp, J, mu, latticeLength)
     #     add averageEnergy and averageMagnetism values to lists
         averageEnergyValues.append(values["averageEnergy"])
         
@@ -135,7 +157,7 @@ if __name__ == "__main__":
     # add magnetic susceptibility value to list
         magneticSusceptibilityValues.append(calculateMagneticSusceptibilty(values["averageMagnetismSquared"], values["averageMagnetism"], values["temperature"]))
 
-    # plot average energy values
+    # plot average energy value"s
     plt.plot(temperatureValues, averageEnergyValues, label="<E>")
     plt.plot(temperatureValues, averageMagnetismValues, label="<M>")
     plt.plot(temperatureValues, heatCapacityValues, label="Heat Capacity")
