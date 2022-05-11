@@ -155,7 +155,36 @@ Getting Started
 Theory
 ------
 
-This package uses the Ising mathematical model in order to calculate the energy of a Hamiltonian.
+This package uses the Ising mathematical model in order to calculate the energy of a Hamiltonian.  When calculating the energy of a Hamiltonian, there are two components that must be considered.  Firstly, interactions between spins in the lattice. Using sigma notation, we can mathematically iterate through all elements in the lattice and determine the energy produced by each interaction between adjascent spins.  The magnitude of this interaction is represented by a constant which we refer to in this package as "J".  Thus we can represent this component of the energy as:
+.. math::
+                -J\sum_{ij} \sigma_i\sigma_j
+
+The other component is produced by some external field.  To calculate this, iterate through each element in the lattice.  The magnitude of this external field is referred to in this package as "mu".  This component can be represented as:
+
+.. math::
+    \mu\sum_{j}\sigma_j
+
+Combining these two components, we can construct a final equation for calculating the final energy of a given hamiltonian using:
+
+.. math::
+    H = -J\sum_{ij} \sigma_i\sigma_j - \mu\sum_{j}\sigma_j
+
+Using this energy calculation, it is possible to find the average energy of all possible states for a lattice of some length.  In order to do this, we must calculate the probability of each configuration occurring which can be represented by the following function:
+
+.. math::
+    P(\alpha) = e^{-E(\alpha)/T}
+
+where T is temperature.  With this, we can use this function to calculate the average energy.  Note that E(alpha) represents the energy of a particular spin configuration.
+
+.. math::
+        <E> = E(\alpha)P(\alpha)
+
+However, this process is extremely computationally expensive so this package also includes a Monte Carlo Sampling module that approximates the average energy of a spin lattice.
+
+
+Works Cited
+-----------
+Chang, Jeffrey. “The Ising Model.” The Ising Model, https://stanford.edu/~jeffjar/statmech/intro4.html. 
 
 
 

@@ -52,7 +52,7 @@ class SingleDimensionHamiltonian:
         """Calculates the energy of this system using:
 
             .. math::
-                E = -J\sum_{ij} \sigma_i\sigma_j - \mu\sum_{j}\sigma_j
+                H = -J\sum_{ij} \sigma_i\sigma_j - \mu\sum_{j}\sigma_j
 
         """
         sumOfProductsOfSpins = 0
