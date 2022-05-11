@@ -20,7 +20,7 @@ Getting Started
             This module includes a set of functions that are used to calculate and plot the average energy, average magnetism, heat capacity, and magnetic susceptibility for a one dimensional lattices of a given length.
             Do do this, all possible spin configurations with the appropriate length are calculated.  The above values are calculated at a given temperature and the process is repeated for all temperatures in some range.
         </p>
-
+        
 .. code-block:: python
 
     # import dependencies
